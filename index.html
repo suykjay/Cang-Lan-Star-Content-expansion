@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
         <meta charset="UTF-8">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -9,21 +9,67 @@
         <link rel="apple-touch-icon" href="icon/icon.png">
         <link rel="stylesheet" type="text/css" href="fonts/gamefont.css">
         <title>魔法少女天穹法妮雅 v1.05</title>
-    </head>
-    <body style="background-color: black">
-        <script type="text/javascript" src="js/libs/pixi.js"></script>
-        <script type="text/javascript" src="js/libs/pixi-tilemap.js"></script>
-        <script type="text/javascript" src="js/libs/pixi-picture.js"></script>
-        <script type="text/javascript" src="js/libs/fpsmeter.js"></script>
-        <script type="text/javascript" src="js/libs/lz-string.js"></script>
-        <script type="text/javascript" src="js/libs/iphone-inline-video.browser.js"></script>
-        <script type="text/javascript" src="js/rpg_core.js"></script>
-        <script type="text/javascript" src="js/rpg_managers.js"></script>
-        <script type="text/javascript" src="js/rpg_objects.js"></script>
-        <script type="text/javascript" src="js/rpg_scenes.js"></script>
-        <script type="text/javascript" src="js/rpg_sprites.js"></script>
-        <script type="text/javascript" src="js/rpg_windows.js"></script>
-        <script type="text/javascript" src="js/plugins.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-    </body>
+    <style>
+        #age-verification {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #age-verification-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        #age-verification button {
+            margin: 10px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body style="background-color: black">
+    <div id="age-verification">
+        <div id="age-verification-content">
+            <h2>年龄验证</h2>
+            <p>您是否已满18岁？</p>
+            <button onclick="verifyAge(true)">是的，我已满18岁</button>
+            <button onclick="verifyAge(false)">不，我未满18岁</button>
+        </div>
+    </div>
+
+    <script>
+        function verifyAge(isAdult) {
+            document.getElementById('age-verification').style.display = 'none';
+            localStorage.setItem('age-verified', 'true');
+            // 这里可以添加额外的逻辑，比如根据年龄显示不同的内容
+        }
+
+        // 检查是否已经验证过年龄
+        if (localStorage.getItem('age-verified') === 'true') {
+            document.getElementById('age-verification').style.display = 'none';
+        }
+    </script>
+
+    <script type="text/javascript" src="js/libs/pixi.js"></script>
+    <script type="text/javascript" src="js/libs/pixi-tilemap.js"></script>
+    <script type="text/javascript" src="js/libs/pixi-picture.js"></script>
+    <script type="text/javascript" src="js/libs/fpsmeter.js"></script>
+    <script type="text/javascript" src="js/libs/lz-string.js"></script>
+    <script type="text/javascript" src="js/libs/iphone-inline-video.browser.js"></script>
+    <script type="text/javascript" src="js/rpg_core.js"></script>
+    <script type="text/javascript" src="js/rpg_managers.js"></script>
+    <script type="text/javascript" src="js/rpg_objects.js"></script>
+    <script type="text/javascript" src="js/rpg_scenes.js"></script>
+    <script type="text/javascript" src="js/rpg_sprites.js"></script>
+    <script type="text/javascript" src="js/rpg_windows.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>
